@@ -4,10 +4,12 @@ gen_random_string() {
     cat /dev/urandom | base64 -w 0 | head -c$1
 }
 
-INTERACTIVE = false
+set -e
+
+INTERACTIVE=false
 
 if [[ $* == *--non-interactive* ]]; then
-    INTERACTIVE = true
+    INTERACTIVE=true
 fi
 
 # change directory to script location
@@ -106,7 +108,7 @@ if [ -z "$SMTP_PASSWORD" ]; then
         echo "Enter SMTP user password:"
         read SMTP_PASSWORD
     fi
-    
+
     echo "SMTP_PASSWORD=\"$SMTP_PASSWORD\"" >> "$CACHE_FILE"
 fi
 
