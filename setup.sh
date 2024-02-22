@@ -6,10 +6,10 @@ gen_random_string() {
 
 set -e
 
-INTERACTIVE=false
+INTERACTIVE=true
 
 if [[ $* == *--non-interactive* ]]; then
-    INTERACTIVE=true
+    INTERACTIVE=false
 fi
 
 # change directory to script location
