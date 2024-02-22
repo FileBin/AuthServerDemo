@@ -1,0 +1,4 @@
+[submodule "Filebin.Common"]
+	path = Filebin.Common
+[submodule "Filebin.AuthServer"]
+	path = Filebin.AuthServer
