@@ -6,10 +6,10 @@ gen_random_string() {
 
 set -e
 
-INTERACTIVE=false
+INTERACTIVE=true
 
 if [[ $* == *--non-interactive* ]]; then
-    INTERACTIVE=true
+    INTERACTIVE=false
 fi
 
 # change directory to script location
@@ -72,8 +72,10 @@ if [ -z "$DB_ROOT_PASSWORD" ]; then
 fi
 
 if [ -z "$DB_USER" ]; then
-    echo "Enter database user name [auth_api]:"
-    read DB_USER
+    if [ $INTERACTIVE = true ]; then
+        echo "Enter database user name [auth_api]:"
+        read DB_USER
+    fi
     if [ -z "$DB_USER" ]; then
         DB_USER="auth_api"
     fi
